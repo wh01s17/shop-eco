@@ -1,19 +1,14 @@
 import type { Metadata } from "next"
-import localFont from 'next/font/local';
+import { Quicksand } from 'next/font/google';
 import { NavBar } from "@/components/NavBar"
 import { Footer } from "@/components/Footer"
 import { Banner } from "@/components/Banner"
 import "./globals.css"
 
-const quicksand = localFont({
-  src: [
-    {
-      path: '../../public/fonts/Quicksand-VariableFont_wght.ttf',
-      weight: '400',
-      style: 'normal',
-    },
-  ],
-  variable: '--font-quicksand',
+const quicksand = Quicksand({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -35,7 +30,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${quicksand.variable} antialiased`}
+        className={`${quicksand.className} antialiased`}
       >
         <NavBar />
         <Banner />
