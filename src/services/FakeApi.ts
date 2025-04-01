@@ -43,20 +43,6 @@ const getCategories = async (): Promise<string[]> => {
     return response.data
 }
 
-// const getCategories = async (): Promise<string[]> => {
-//     const request = axios.get<Product[]>(`${baseUrl}products`)
-//     const response = await request
-//     let categoriesSet = new Set<string>()
-
-//     response.data.map(product => {
-//         categoriesSet.add(product.category)
-//     })
-
-//     const categories = Array.from(categoriesSet).sort()
-
-//     return categories
-// }
-
 export default {
     getProducts,
     getProductById,

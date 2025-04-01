@@ -15,46 +15,56 @@ export const NavBar = () => {
     }, [])
 
     return (
-        <nav className='flex justify-between px-10 py-5 shadow mb-5 bg-green-700 text-white'>
+        <nav
+            className='flex justify-between px-10 shadow-2xl bg-green-700 text-white z-10 fixed w-full items-center
+                        xs:py-2 2xl:py-5 opacity-90'
+        >
             <section>
                 <Link href='/'>
-                    <h1 className='font-bold text-3xl duration-200
+                    <h1 className='font-bold xs:text-2xl 2xl:text-4xl duration-200
                             hover:text-green-900 hover:cursor-pointer'>
-                        Shop-Eco
+                        Shop-Eco<i className="font-light ri-leaf-line" />
                     </h1>
                 </Link>
             </section>
 
             <section>
-                <ul className='flex gap-10 font-bold text-xl [&>li]:duration-200
-                            [&>li]:hover:text-green-900 [&>li]:hover:cursor-pointer [&>li]:hover:scale-105'>
+                <ul className='flex gap-10 font-bold xs:text-md 2xl:text-xl [&>li]:duration-200
+                            [&>li]:hover:text-green-900 [&>li]:hover:cursor-pointer'>
                     <li>
                         Productos
                     </li>
                     <li className='relative group'>
                         Categorias
                         <div
-                            className='mt-3 bg-green-700 text-white absolute left-0 opacity-0 w-max overflow-hidden shadow duration-200 px-2  rounded-md
-                                        group-hover:opacity-100 '
+                            className='mt-2 bg-white text-zinc-700 absolute left-0 opacity-0 w-max overflow-hidden shadow duration-200 px-2  rounded-md
+                                        group-hover:opacity-100 z-10'
                         >
                             <ul>
                                 {
                                     categories.map((category, index) => (
-                                        <li key={index} className='hover:text-green-900 capitalize py-1 text-lg'>{category}</li>
+                                        <li key={index} className='hover:text-green-800 capitalize py-1 xs:text-sm 2xl:text-lg mb-1'>{category}</li>
                                     ))
                                 }
                             </ul>
                         </div>
                     </li>
                     <li>
-                        Carrito
+                        Carro <i className="ri-shopping-cart-2-line" />
                     </li>
                     <li className='realtive group'>
-                        Iniciar sesión
-                        <div className='opacity-0 absolute group-hover:opacity-100 bg-green-700 w-max right-0 px-4 mt-3 rounded-md text-white'>
-                            <Link href='/' className='hover:text-green-900 capitalize py-1 text-lg'>
-                                Registrarse
-                            </Link>
+                        Iniciar sesión <i className="ri-login-box-line" />
+                        <div className='opacity-0 absolute group-hover:opacity-100 bg-white w-max right-12 px-4 mt-2 rounded-md text-zinc-700'>
+                            <ul className='xs:text-sm 2xl:text-lg'>
+                                <li>
+                                    <Link href='/' className='hover:text-green-800 py-1 '>
+                                        Registrarse
+                                    </Link>
+                                </li>
+                                <li className='hover:text-green-800 py-1'>
+                                    Cerrar sesión
+                                </li>
+                            </ul>
                         </div>
                     </li>
                 </ul>

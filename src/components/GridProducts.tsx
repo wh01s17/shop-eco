@@ -2,6 +2,8 @@ import React from 'react'
 
 export const GridProducts = () => {
     return (
-        <div>GridProducts</div>
+        <div className='h-dvh'>
+            GridProducts
+        </div>
     )
 }
