@@ -46,3 +46,24 @@ html {
 .animate-slide-in-right {
   animation: slide-in-right 0.8s ease-out forwards;
 }
+
+@keyframes swing {
+
+  0% {
+    transform: rotate(-5deg);
+  }
+
+  50% {
+    transform: rotate(5deg);
+  }
+
+  100% {
+    transform: rotate(-5deg);
+  }
+}
+
+.swing-animation {
+  display: inline-block;
+  animation: swing 2s ease-in-out infinite;
+  transform-origin: bottom center;
+}

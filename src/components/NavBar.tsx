@@ -23,7 +23,7 @@ export const NavBar = () => {
                 className='font-bold xs:text-2xl 2xl:text-4xl duration-200
                         hover:text-green-900 '
             >
-                Shop-Eco<i className="font-light ri-leaf-line" />
+                Shop-Eco<i className="font-light ri-leaf-line swing-animation" />
             </Link>
 
             <section>
@@ -46,7 +46,9 @@ export const NavBar = () => {
                             <ul>
                                 {
                                     categories.map((category, index) => (
-                                        <li key={index} className='hover:text-green-800 capitalize xs:text-sm 2xl:text-lg py-1'>{category}</li>
+                                        <li key={index} className='hover:text-green-800 capitalize xs:text-sm 2xl:text-lg py-1'>
+                                            {category}
+                                        </li>
                                     ))
                                 }
                             </ul>

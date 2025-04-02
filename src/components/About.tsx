@@ -3,7 +3,9 @@ import React from 'react'
 
 export const About = () => {
     return (
-        <section className='my-20' id='about'>
+        <section id='about'
+            className='my-20'
+        >
             <h1 className='text-4xl font-bold text-green-900 mb-10'>
                 About
             </h1>
@@ -35,7 +37,9 @@ export const About = () => {
                 />
             </div>
 
-            <h1 className='text-3xl font-bold text-green-900 mb-10 mt-20'>The Plastic Crisis in Our Oceans</h1>
+            <h1 className='text-3xl font-bold text-green-900 mb-10 mt-20'>
+                The Plastic Crisis in Our Oceans
+            </h1>
             <p className='text-2xl'>
                 Every year, over 8 million tons of plastic waste end up in the ocean, harming marine life and disrupting entire ecosystems. Scientists estimate that by 2050, there could be more plastic than fish in the sea if current pollution rates continue. Microplastics have been found in 100% of marine turtles and over 90% of seabirds, illustrating the urgent need for change.
 
