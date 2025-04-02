@@ -18,10 +18,13 @@ export const Footer = () => {
     return (
         <footer className='bg-green-200'>
             <div className='h-fit flex px-40 py-20 gap-20 justify-evenly'>
-                <h1 className='text-5xl text-green-900'>
-                    <b className="hover:text-green-700 transition-colors duration-300">Shop-Eco</b>
-                    <i className="font-light ri-leaf-line ml-1 swing-animation" />
-                </h1>
+                <Link href='/'>
+                    <h1 className='text-5xl text-green-900 duration-300 hover:text-green-700'>
+                        <b className="transition-colors">Shop-Eco</b>
+                        <i className="font-light ri-leaf-line ml-1 swing-animation" />
+                    </h1>
+                </Link>
+
                 <div>
                     <h1 className='text-3xl mb-5'>Categories</h1>
                     <ul>
@@ -96,7 +99,7 @@ export const Footer = () => {
             </div>
 
             <div className='flex flex-col items-center justify-center text-base py-5 '>
-                <p>Made in Chile con 💚</p>
+                <p>Made in Chile with 💚</p>
                 <p><Link href="https://wh01s17.vercel.app/"
                     rel="noreferer"
                     target="_blank"
