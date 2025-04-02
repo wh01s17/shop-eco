@@ -17,9 +17,9 @@ export const BestSellers = () => {
     }, [])
 
     return (
-        <section className='mx-40 my-20'>
+        <section className='mx-40 my-40'>
             <div className='mb-60'>
-                <h1 className='text-3xl font-bold text-green-900'>Más vendidos</h1>
+                <h1 className='text-4xl font-bold text-green-900'>Best sellers</h1>
                 <div className="overflow-x-auto mt-5">
                     <div
                         id="gridProducts"
@@ -41,6 +41,5 @@ export const BestSellers = () => {
                 <Clothes filter={'men\'s clothing'} />
             </div>
         </section>
-
     )
 }

@@ -30,6 +30,11 @@ export const NavBar = () => {
                 <ul className='flex gap-10 font-bold xs:text-md 2xl:text-xl [&>li]:duration-200
                             [&>li]:hover:text-green-900 [&>li]:hover:cursor-pointer'>
                     <li>
+                        <Link href='/#about'>
+                            About
+                        </Link>
+                    </li>
+                    <li>
                         Products
                     </li>
                     <li className='relative group'>

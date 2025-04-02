@@ -45,7 +45,7 @@ export const Clothes = ({ filter }: { filter: string }) => {
 
             <div
                 ref={scrollRef}
-                className='flex w-full h-[600px] overflow-x-hidden snap-x snap-mandatory scrollbar-hide bg-white'
+                className='flex w-full h-[600px] overflow-x-hidden snap-x snap-mandatory scrollbar-hide bg-white rounded-lg'
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                 {
                     products.map((product, index) => {
@@ -68,12 +68,10 @@ export const Clothes = ({ filter }: { filter: string }) => {
                                     <p className="text-xl font-bold">${product.price}</p>
                                 </div>
                             </Link>
-
                         </div>
                     })
                 }
             </div>
-
         </div>
     )
 }
