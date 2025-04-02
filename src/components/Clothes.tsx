@@ -38,7 +38,7 @@ export const Clothes = ({ filter }: { filter: string }) => {
 
     return (
         <div className='my-8 xs:w-1/3 3xl:w-1/4 mx-auto flex flex-col items-center py-20'>
-            <h1 className='text-3xl font-bold text-green-900 mb-15 capitalize
+            <h1 className='text-4xl font-bold text-green-900 mb-15 capitalize
                             [text-shadow:2px_2px_0px_white,-2px_2px_0px_white,2px_-2px_0px_white,-2px_-2px_0px_white]'>
                 {filter}
             </h1>

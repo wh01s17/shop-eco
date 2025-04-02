@@ -19,7 +19,12 @@ export const BestSellers = () => {
     return (
         <section className='my-40'>
             <div className='mb-30'>
-                <h1 className='text-4xl font-bold text-green-900 swing-animation'>Best sellers</h1>
+                <h1 className='text-5xl font-bold text-green-900 swing-soft-animation'>
+                    Best sellers <i className="ri-star-fill text-amber-300" />
+
+                    <i className="ri-star-fill text-amber-300" />
+                    <i className="ri-star-fill text-amber-300" />
+                </h1>
                 <div className="overflow-x-auto mt-5">
                     <div
                         id="gridProducts"

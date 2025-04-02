@@ -4,12 +4,12 @@ import React from 'react'
 export const Shipping = () => {
     return (
         <div className='my-40' id='about'>
-            <h1 className='text-4xl font-bold text-green-900 mb-10'>
+            <h1 className='text-5xl font-bold text-green-900 mb-10'>
                 Shipping Information
             </h1>
 
             <p className='text-2xl'>
-                We offer both local and worldwide shipping to ensure that our sustainable products can reach customers everywhere. Whether you're nearby or on the other side of the globe, we strive to provide a smooth and reliable delivery service. Our packaging is eco-friendly, minimizing plastic waste to align with our commitment to sustainability. Shop with confidence and join us in making a positive impact on the planet.
+                We offer both, local and worldwide shipping, to ensure that our sustainable products can reach customers everywhere. Whether you're nearby or on the other side of the globe, we strive to provide a smooth and reliable delivery service. Our packaging is eco-friendly, minimizing plastic waste to align with our commitment to sustainability. Shop with confidence and join us in making a positive impact on the planet.
             </p>
 
             <div className='flex flex-wrap justify-evenly my-20'>
@@ -34,7 +34,7 @@ export const Shipping = () => {
                     alt='ship-03'
                     width={600}
                     height={300}
-                    className='rounded-lg'
+                    className='rounded-lg 3xl:-rotate-3'
                 />
             </div>
         </div>

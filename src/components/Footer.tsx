@@ -19,8 +19,8 @@ export const Footer = () => {
         <footer className='bg-green-200'>
             <div className='h-fit flex px-40 py-20 gap-20 justify-evenly'>
                 <Link href='/'>
-                    <h1 className='text-5xl text-green-900 duration-300 hover:text-green-700'>
-                        <b className="transition-colors">Shop-Eco</b>
+                    <h1 className='text-5xl text-green-900 duration-300 hover:text-green-700 swing-soft-animation'>
+                        <b className="">Shop-Eco</b>
                         <i className="font-light ri-leaf-line ml-1 swing-animation" />
                     </h1>
                 </Link>

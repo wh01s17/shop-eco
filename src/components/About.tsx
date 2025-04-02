@@ -6,8 +6,8 @@ export const About = () => {
         <section id='about'
             className='my-20'
         >
-            <h1 className='text-4xl font-bold text-green-900 mb-10'>
-                About
+            <h1 className='text-5xl font-bold text-green-900 mb-10'>
+                About us
             </h1>
             <p className='text-2xl'>
                 At <b>Shop-Eco</b><i className="font-light ri-leaf-line" />, we believe in giving products a second life. We specialize in selling recycled clothing, electronics, and jewelry, offering a sustainable alternative for those looking for style, technology, and elegance with an eco-conscious mindset.

@@ -67,3 +67,24 @@ html {
   animation: swing 2s ease-in-out infinite;
   transform-origin: bottom center;
 }
+
+@keyframes swing-soft {
+
+  0% {
+    transform: rotate(-1deg);
+  }
+
+  50% {
+    transform: rotate(1deg);
+  }
+
+  100% {
+    transform: rotate(-1deg);
+  }
+}
+
+.swing-soft-animation {
+  display: inline-block;
+  animation: swing-soft 1s ease-in-out infinite;
+  transform-origin: bottom center;
+}
