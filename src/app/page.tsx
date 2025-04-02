@@ -1,13 +1,16 @@
 import { About } from "@/components/About";
 import { BestSellers } from "@/components/BestSellers";
+import { Container } from "@/components/layout/Container";
 import { Shipping } from "@/components/Shipping";
 
 export default function Home() {
   return (
     <div>
-      <BestSellers />
-      <About />
-      <Shipping />
+      <Container>
+        <BestSellers />
+        <About />
+        <Shipping />
+      </Container>
     </div>
   );
 }

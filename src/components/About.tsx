@@ -3,7 +3,7 @@ import React from 'react'
 
 export const About = () => {
     return (
-        <section className='mx-40 my-20' id='about'>
+        <section className='my-20' id='about'>
             <h1 className='text-4xl font-bold text-green-900 mb-10'>
                 About
             </h1>
@@ -12,7 +12,7 @@ export const About = () => {
 
                 Our commitment is to carefully select each item to ensure quality and functionality, reducing environmental impact and promoting responsible consumption. We believe that every piece has a story and deserves to continue in the hands of those who appreciate its design and utility.
 
-                Whether you're looking for unique garments, refurbished electronic devices, or jewelry with history, at [Store Name] you'll find products that combine authenticity, savings, and sustainability.
+                Whether you're looking for unique garments, refurbished electronic devices, or jewelry with history, at <b>Shop-Eco</b><i className="font-light ri-leaf-line" />, you'll find products that combine authenticity, savings, and sustainability.
 
                 Join our community and be part of the movement towards a greener, more conscious world.
             </p>
@@ -36,7 +36,7 @@ export const About = () => {
             </div>
 
             <h1 className='text-3xl font-bold text-green-900 mb-10 mt-20'>The Plastic Crisis in Our Oceans</h1>
-            <p>
+            <p className='text-2xl'>
                 Every year, over 8 million tons of plastic waste end up in the ocean, harming marine life and disrupting entire ecosystems. Scientists estimate that by 2050, there could be more plastic than fish in the sea if current pollution rates continue. Microplastics have been found in 100% of marine turtles and over 90% of seabirds, illustrating the urgent need for change.
 
                 By choosing recycled products, you contribute to reducing waste and protecting our planet's waters. Let's take action together to preserve the oceans for future generations.

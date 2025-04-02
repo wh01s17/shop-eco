@@ -17,25 +17,27 @@ export const BestSellers = () => {
     }, [])
 
     return (
-        <section className='mx-40 my-40'>
-            <div className='mb-60'>
+        <section className='my-40'>
+            <div className='mb-30'>
                 <h1 className='text-4xl font-bold text-green-900'>Best sellers</h1>
                 <div className="overflow-x-auto mt-5">
                     <div
                         id="gridProducts"
                         className="grid grid-flow-col auto-cols-max gap-5 overflow-x-auto"
                     >
-                        {products.map(product => (
-                            <CardProduct key={product.id} product={product} />
-                        ))}
+                        {
+                            products.map(product => (
+                                <CardProduct key={product.id} product={product} />
+                            ))
+                        }
                     </div>
                 </div>
             </div>
 
             <div
-                className='my-20 flex justify-evenly text-green-900
+                className='flex justify-evenly text-green-900
                             bg-cover bg-center'
-                style={{ backgroundImage: "url('/images/bg.png')" }}
+                style={{ backgroundImage: "url('/images/bg.webp')" }}
             >
                 <Clothes filter={'women\'s clothing'} />
                 <Clothes filter={'men\'s clothing'} />
