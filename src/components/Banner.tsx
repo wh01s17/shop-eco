@@ -5,7 +5,9 @@ import React, { useEffect, useRef } from 'react'
 export const Banner = () => {
     const images = [
         '/images/img-01.webp',
+        '/images/img-04.webp',
         '/images/img-02.webp',
+        '/images/img-05.webp',
         '/images/img-03.webp'
     ]
 
@@ -49,11 +51,16 @@ export const Banner = () => {
                     )
                 })
             }
-            <div className='absolute z-9 right-50 xs:pt-80 2xl:pt-100 3xl:pt-200 font-bold animate-slide-in-right'>
+            <div
+                className='absolute z-9 right-50 xs:pt-80 2xl:pt-100 3xl:pt-200 font-bold animate-slide-in-right'
+            >
                 <h2 className='text-white xs:text-4xl 2xl:text-6xl 3xl:text-[6rem]'>
                     Reutilizables, ecológicos,
                 </h2>
-                <h2 className='text-green-700 xs:text-7xl 2xl:text-9xl 3xl:text-[15rem] '>
+                <h2
+                    className='text-green-700 xs:text-7xl 2xl:text-9xl 3xl:text-[15rem]
+                                [text-shadow:2px_2px_0px_white,-2px_2px_0px_white,2px_-2px_0px_white,-2px_-2px_0px_white]'
+                >
                     conscientes
                 </h2>
             </div>

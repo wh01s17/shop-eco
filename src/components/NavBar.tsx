@@ -17,11 +17,11 @@ export const NavBar = () => {
     return (
         <nav
             className='flex justify-between px-10 shadow-2xl bg-green-700 text-white z-10 fixed w-full items-center
-                        xs:py-2 2xl:py-5 opacity-90'
+                        xs:py-2 2xl:py-5 opacity-95'
         >
             <Link href='/'
                 className='font-bold xs:text-2xl 2xl:text-4xl duration-200
-                        hover:text-green-900'
+                        hover:text-green-900 '
             >
                 Shop-Eco<i className="font-light ri-leaf-line" />
             </Link>

@@ -1,9 +1,9 @@
-import { GridProducts } from "@/components/GridProducts";
+import { BestSellers } from "@/components/BestSellers";
 
 export default function Home() {
   return (
     <div>
-      <GridProducts />
+      <BestSellers />
     </div>
   );
 }

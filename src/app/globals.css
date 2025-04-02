@@ -9,6 +9,12 @@ html {
   scroll-behavior: smooth;
 }
 
+@layer utilities {
+  .text-outline {
+    -webkit-text-stroke: 1px white;
+  }
+}
+
 @keyframes slide-in-left {
   0% {
     transform: translateX(-100%);

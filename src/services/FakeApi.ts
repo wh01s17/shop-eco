@@ -1,17 +1,5 @@
+import { Product } from '@/types/product'
 import axios from 'axios'
-
-interface Product {
-    id: number
-    title: string
-    price: number
-    description: string
-    category: string
-    image: string
-    rating: {
-        rate: number,
-        count: number
-    }
-}
 
 const baseUrl = 'https://fakestoreapi.com/'
 
@@ -36,6 +24,13 @@ const getProductByCategory = async (category: string): Promise<Product[]> => {
     return response.data
 }
 
+const getMostValuedProducts = async (): Promise<Product[]> => {
+    const request = axios.get<Product[]>(`${baseUrl}products`)
+    const response = await request
+
+    return response.data.filter(product => product.rating.rate > 4);
+}
+
 const getCategories = async (): Promise<string[]> => {
     const request = axios.get<string[]>(`${baseUrl}products/categories`)
     const response = await request
@@ -48,4 +43,5 @@ export default {
     getProductById,
     getCategories,
     getProductByCategory,
+    getMostValuedProducts
 }
