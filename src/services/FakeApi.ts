@@ -28,7 +28,7 @@ const getMostValuedProducts = async (): Promise<Product[]> => {
     const request = axios.get<Product[]>(`${baseUrl}products`)
     const response = await request
 
-    return response.data.filter(product => product.rating.rate > 4);
+    return response.data.filter(product => product.rating.rate > 4)
 }
 
 const getCategories = async (): Promise<string[]> => {

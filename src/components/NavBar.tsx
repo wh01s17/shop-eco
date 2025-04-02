@@ -30,10 +30,10 @@ export const NavBar = () => {
                 <ul className='flex gap-10 font-bold xs:text-md 2xl:text-xl [&>li]:duration-200
                             [&>li]:hover:text-green-900 [&>li]:hover:cursor-pointer'>
                     <li>
-                        Productos
+                        Products
                     </li>
                     <li className='relative group'>
-                        Categorias
+                        Categories
                         <div
                             className='mt-2 bg-white text-zinc-700 absolute left-0 opacity-0 w-max overflow-hidden shadow duration-200 px-2  
                                         rounded-md group-hover:opacity-100 z-10'
@@ -48,20 +48,20 @@ export const NavBar = () => {
                         </div>
                     </li>
                     <li>
-                        Carro <i className="ri-shopping-cart-2-line" />
+                        Cart <i className="ri-shopping-cart-2-line" />
                     </li>
                     <li className='realtive group'>
-                        Iniciar sesión <i className="ri-login-box-line" />
+                        Log-in <i className="ri-login-box-line" />
                         <div className='mt-2 bg-white text-zinc-700 absolute right-13 opacity-0 w-max overflow-hidden shadow duration-200 px-2    
                                         py-1 rounded-md group-hover:opacity-100 z-10 text-center'>
                             <ul className='xs:text-sm 2xl:text-lg'>
                                 <li>
                                     <Link href='/' className='hover:text-green-800 capitalize xs:text-sm 2xl:text-lg'>
-                                        Registrarse
+                                        Sign-in
                                     </Link>
                                 </li>
                                 <li className='hover:text-green-800 py-1 xs:text-sm 2xl:text-lg'>
-                                    Cerrar sesión
+                                    Log-out
                                 </li>
                             </ul>
                         </div>

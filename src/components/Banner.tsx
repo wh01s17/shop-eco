@@ -17,7 +17,6 @@ export const Banner = () => {
         let currentIndex = 0
         const interval = setInterval(() => {
             if (scrollRef.current) {
-                console.log(scrollRef.current)
                 currentIndex = (currentIndex + 1) % images.length
                 const scrollPosition = currentIndex * scrollRef.current.offsetWidth
                 scrollRef.current.scrollTo({
@@ -55,13 +54,13 @@ export const Banner = () => {
                 className='absolute z-9 right-50 xs:pt-80 2xl:pt-100 3xl:pt-200 font-bold animate-slide-in-right'
             >
                 <h2 className='text-white xs:text-4xl 2xl:text-6xl 3xl:text-[6rem]'>
-                    Reutilizables, ecológicos,
+                    Reusable, eco-friendly,
                 </h2>
                 <h2
                     className='text-green-700 xs:text-7xl 2xl:text-9xl 3xl:text-[15rem]
                                 [text-shadow:2px_2px_0px_white,-2px_2px_0px_white,2px_-2px_0px_white,-2px_-2px_0px_white]'
                 >
-                    conscientes
+                    conscious
                 </h2>
             </div>
         </div>
