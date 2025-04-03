@@ -15,10 +15,12 @@ export const Banner = () => {
 
     useEffect(() => {
         let currentIndex = 0
+
         const interval = setInterval(() => {
             if (scrollRef.current) {
                 currentIndex = (currentIndex + 1) % images.length
                 const scrollPosition = currentIndex * scrollRef.current.offsetWidth
+
                 scrollRef.current.scrollTo({
                     left: scrollPosition,
                     behavior: 'smooth'

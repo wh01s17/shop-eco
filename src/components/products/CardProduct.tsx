@@ -2,7 +2,7 @@ import { Product } from '@/types/product'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { Button } from './ui/Button'
+import { Button } from '../ui/Button'
 
 export const CardProduct = ({ product }: { product: Product }) => {
     const { id, title, price, category, image, rating } = product

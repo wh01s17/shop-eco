@@ -20,8 +20,10 @@ export const Footer = () => {
             <div className='h-fit flex px-40 py-20 gap-20 justify-evenly'>
                 <Link href='/'>
                     <h1 className='text-5xl text-green-900 duration-300 hover:text-green-700 swing-soft-animation'>
-                        <b className="">Shop-Eco</b>
-                        <i className="font-light ri-leaf-line ml-1 swing-animation" />
+                        <u>
+                            <b className="">Shop-Eco</b>
+                            <i className="font-light ri-leaf-line ml-1 swing-animation" />
+                        </u>
                     </h1>
                 </Link>
 
@@ -35,7 +37,7 @@ export const Footer = () => {
                                     className='capitalize text-xl duration-100 hover:scale-105 hover:text-green-800'
                                 >
                                     <Link
-                                        href={`/products/${category}`}
+                                        href={`/products/category/${category}`}
                                         className='text-md'
                                     >
                                         {category}

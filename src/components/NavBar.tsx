@@ -23,7 +23,9 @@ export const NavBar = () => {
                 className='font-bold xs:text-2xl 2xl:text-4xl duration-200
                         hover:text-green-900 '
             >
-                Shop-Eco<i className="font-light ri-leaf-line swing-animation" />
+                <u>
+                    Shop-Eco<i className="font-light ri-leaf-line swing-animation" />
+                </u>
             </Link>
 
             <section>
@@ -31,14 +33,13 @@ export const NavBar = () => {
                             [&>li]:hover:text-green-900 [&>li]:hover:cursor-pointer'>
                     <li>
                         <Link href='/#about'>
-                            About
+                            About us
                         </Link>
                     </li>
-                    <li>
-                        Products
-                    </li>
                     <li className='relative group'>
-                        Categories
+                        <Link href='/products'>
+                            Products
+                        </Link>
                         <div
                             className='mt-2 bg-white text-zinc-700 absolute left-0 opacity-0 w-max overflow-hidden shadow duration-200 px-2  
                                         rounded-md group-hover:opacity-100 z-10'
@@ -47,7 +48,9 @@ export const NavBar = () => {
                                 {
                                     categories.map((category, index) => (
                                         <li key={index} className='hover:text-green-800 capitalize xs:text-sm 2xl:text-lg py-1'>
-                                            {category}
+                                            <Link href={`/products/category/${category}`}>
+                                                {category}
+                                            </Link>
                                         </li>
                                     ))
                                 }
@@ -59,16 +62,16 @@ export const NavBar = () => {
                     </li>
                     <li className='realtive group'>
                         Log-in <i className="ri-login-box-line" />
-                        <div className='mt-2 bg-white text-zinc-700 absolute right-13 opacity-0 w-max overflow-hidden shadow duration-200 px-2    
+                        <div className='mt-2 bg-white text-zinc-700 absolute right-8 opacity-0 w-max overflow-hidden shadow duration-200 px-2    
                                         py-1 rounded-md group-hover:opacity-100 z-10 text-center'>
                             <ul className='xs:text-sm 2xl:text-lg'>
                                 <li>
                                     <Link href='/' className='hover:text-green-800 capitalize xs:text-sm 2xl:text-lg'>
-                                        Sign-in
+                                        Sign-in <i className="ri-door-open-line" />
                                     </Link>
                                 </li>
                                 <li className='hover:text-green-800 py-1 xs:text-sm 2xl:text-lg'>
-                                    Log-out
+                                    Log-out <i className="ri-logout-box-line" />
                                 </li>
                             </ul>
                         </div>

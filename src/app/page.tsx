@@ -1,5 +1,5 @@
 import { About } from "@/components/About";
-import { BestSellers } from "@/components/BestSellers";
+import { BestSellers } from "@/components/products/BestSellers";
 import { Container } from "@/components/layout/Container";
 import { Shipping } from "@/components/Shipping";
 
