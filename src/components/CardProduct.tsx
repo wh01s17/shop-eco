@@ -2,6 +2,7 @@ import { Product } from '@/types/product'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { Button } from './ui/Button'
 
 export const CardProduct = ({ product }: { product: Product }) => {
     const { id, title, price, category, image, rating } = product
@@ -51,6 +52,9 @@ export const CardProduct = ({ product }: { product: Product }) => {
                     Rating: {rate} <i className="ri-star-fill text-amber-300" />
                     ({count} reviews)
                 </div>
+                <Button>
+                    Add to cart <i className="ri-shopping-cart-2-line" />
+                </Button>
             </div>
         </article>
     )
