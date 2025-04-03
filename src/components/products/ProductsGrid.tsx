@@ -2,6 +2,7 @@
 import { Product } from '@/types/product'
 import { CardProduct } from './CardProduct'
 import React, { useMemo, useState } from 'react'
+import { Loading } from '../ui/Loading'
 
 export const ProductsGrid = ({ products }: { products: Product[] }) => {
     const [sortOption, setSortOption] = useState("None")
@@ -40,7 +41,7 @@ export const ProductsGrid = ({ products }: { products: Product[] }) => {
             product.description.toLowerCase().includes(search.toLowerCase())
     })
 
-    if (!products) return null
+    if (filterProducts.length === 0) return <Loading />
 
     return (
         <section className='flex flex-col w-full justify-center my-20 gap-3'>

@@ -29,7 +29,7 @@ export const CardProduct = ({ product }: { product: Product }) => {
                     </Link>
                 </h3>
 
-                <div className='flex flex-col items-center h-1/2'>
+                <div className='flex flex-col items-center justify-center h-1/2'>
                     <Link
                         href={`/products/${id}`}
                     >

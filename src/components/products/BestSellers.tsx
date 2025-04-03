@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import fakeApiServices from '@/services/FakeApi'
 import { CardProduct } from './CardProduct'
 import { Clothes } from './Clothes'
+import { Loading } from '../ui/Loading'
 
 export const BestSellers = () => {
     const [products, setProducts] = useState<Product[]>([])
@@ -12,9 +13,13 @@ export const BestSellers = () => {
         fakeApiServices
             .getMostValuedProducts()
             .then(data => {
-                setProducts(data)
+                const productsCopy = [...data]
+                productsCopy.sort((a, b) => b.rating.rate - a.rating.rate)
+                setProducts(productsCopy)
             })
     }, [])
+
+    if (products.length === 0) return <Loading />
 
     return (
         <section className='my-40'>
