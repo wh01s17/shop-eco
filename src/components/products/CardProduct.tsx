@@ -41,7 +41,6 @@ export const CardProduct = ({ product }: { product: Product }) => {
                             className='object-contain'
                         />
                     </Link>
-
                 </div>
             </div>
 
@@ -49,8 +48,7 @@ export const CardProduct = ({ product }: { product: Product }) => {
                 <p className="font-bold">${price}</p>
 
                 <div className="mt-2">
-                    Rating: {rate} <i className="ri-star-fill text-amber-300" />
-                    ({count} reviews)
+                    Rating: {rate} <i className="ri-star-fill text-amber-400" /> ({count} reviews)
                 </div>
                 <Button>
                     Add to cart <i className="ri-shopping-cart-2-line" />

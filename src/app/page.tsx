@@ -5,12 +5,10 @@ import { Shipping } from "@/components/Shipping";
 
 export default function Home() {
   return (
-    <div>
-      <Container>
-        <BestSellers />
-        <About />
-        <Shipping />
-      </Container>
-    </div>
-  );
+    <Container>
+      <BestSellers />
+      <About />
+      <Shipping />
+    </Container>
+  )
 }
