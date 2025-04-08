@@ -49,7 +49,7 @@ export const ProductsGrid = ({ products }: { products: Product[] }) => {
                 <div id='sort'>
                     <h1 className='font-bold'>Sort by</h1>
                     <select
-                        className='border w-fit rounded-lg px-1'
+                        className='border w-fit rounded-sm px-1'
                         value={sortOption}
                         onChange={handleSortOption}
                     >
@@ -83,7 +83,7 @@ export const ProductsGrid = ({ products }: { products: Product[] }) => {
                         name="search"
                         id="search"
                         placeholder='Search...'
-                        className='border rounded-lg px-1'
+                        className='border rounded-sm px-1'
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                     />

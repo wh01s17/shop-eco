@@ -57,7 +57,8 @@ export const CardProduct = ({ product }: { product: Product }) => {
                 <div className="mt-2">
                     Rating: {rate} <i className="ri-star-fill text-amber-400" /> ({count} reviews)
                 </div>
-                <Button>
+                <Button
+                >
                     Add to cart <i className="ri-shopping-cart-2-line" />
                 </Button>
             </div>

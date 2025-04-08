@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import fakeApiServices from '@/services/FakeApi'
+import { SmallCart } from './cart/SmallCart'
 
 export const NavBar = () => {
     const [categories, setCategories] = useState<string[]>([])
@@ -29,7 +30,7 @@ export const NavBar = () => {
             </Link>
 
             <section>
-                <ul className='flex gap-10 font-bold xs:text-md 2xl:text-xl [&>li]:duration-200
+                <ul className='flex gap-15 font-bold xs:text-md 2xl:text-xl [&>li]:duration-200
                             [&>li]:hover:text-green-900 [&>li]:hover:cursor-pointer'>
                     <li>
                         <Link href='/#about'>
@@ -62,12 +63,7 @@ export const NavBar = () => {
                         </div>
                     </li>
                     <li className='relative group'>
-                        Cart <i className="ri-shopping-cart-2-line" />
-                        <div>
-                            <ul>
-
-                            </ul>
-                        </div>
+                        <SmallCart />
                     </li>
                     <li className='relative'>
                         <div className='group inline-block'>
