@@ -4,6 +4,8 @@ import { NavBar } from "@/components/NavBar"
 import { Footer } from "@/components/Footer"
 import { Banner } from "@/components/Banner"
 import "./globals.css"
+import { Toaster } from "sonner";
+import { Providers } from "./providers";
 
 const quicksand = Quicksand({
   subsets: ['latin'],
@@ -32,10 +34,13 @@ export default function RootLayout({
       <body
         className={`${quicksand.className} antialiased`}
       >
-        <NavBar />
-        <Banner />
-        {children}
-        <Footer />
+        <Providers>
+          <Toaster richColors position="top-center" />
+          <NavBar />
+          <Banner />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   )

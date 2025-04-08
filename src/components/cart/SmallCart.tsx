@@ -1,8 +1,7 @@
+import { Cart } from '@/types/cart'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { Button } from '../ui/Button'
-import { Cart } from '@/types/Cart'
 
 export const SmallCart = () => {
     let total = 0

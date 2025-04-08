@@ -3,9 +3,20 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import fakeApiServices from '@/services/FakeApi'
 import { SmallCart } from './cart/SmallCart'
+import { useAuth } from '@/context/AuthContext'
+import { signOut } from 'firebase/auth'
+import { auth } from '@/firebase/config'
+import { toast } from 'sonner'
+
 
 export const NavBar = () => {
+    const { currentUser } = useAuth()
     const [categories, setCategories] = useState<string[]>([])
+
+    const signOutHandler = async () => {
+        await signOut(auth)
+        toast.info('Session ended, see you soon ✌')
+    }
 
     useEffect(() => {
         fakeApiServices
@@ -67,28 +78,37 @@ export const NavBar = () => {
                     </li>
                     <li className='relative'>
                         <div className='group inline-block'>
-                            <span className='cursor-pointer'>
-                                Log-in <i className="ri-login-box-line" />
-                            </span>
-
-                            <div
-                                className='mt-0 bg-white text-zinc-700 absolute -right-2 opacity-0 w-max overflow-hidden shadow duration-200 px-2 
-                                            py-1 rounded-md group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none z-10 text-center'
-                            >
-                                <ul className='xs:text-sm 2xl:text-lg'>
-                                    <li>
-                                        <Link
-                                            href='/'
-                                            className='hover:text-green-800 capitalize xs:text-sm 2xl:text-lg'
-                                        >
-                                            Sign-in <i className="ri-door-open-line" />
-                                        </Link>
-                                    </li>
-                                    <li className='hover:text-green-800 py-1 xs:text-sm 2xl:text-lg'>
+                            {
+                                currentUser
+                                    ? <button
+                                        onClick={signOutHandler}
+                                        className='cursor-pointer'
+                                    >
                                         Log-out <i className="ri-logout-box-line" />
-                                    </li>
-                                </ul>
-                            </div>
+                                    </button>
+                                    : <Link href='/login'>
+                                        Log-in <i className="ri-login-box-line" />
+                                    </Link>
+                            }
+
+                            {
+                                !currentUser &&
+                                <div
+                                    className='mt-0 bg-white text-zinc-700 absolute -right-2 opacity-0 w-max overflow-hidden shadow duration-200 px-2 
+                                            py-1 rounded-md group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none z-10 text-center'
+                                >
+                                    <ul className='xs:text-sm 2xl:text-lg'>
+                                        <li>
+                                            <Link
+                                                href='/signin'
+                                                className='hover:text-green-800 capitalize xs:text-sm 2xl:text-lg'
+                                            >
+                                                Sign-in <i className="ri-door-open-line" />
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </div>
+                            }
                         </div>
                     </li>
                 </ul>

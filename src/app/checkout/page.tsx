@@ -1,8 +1,11 @@
 import { Checkout } from "@/components/cart/Checkout"
+import ProtectedRoute from "@/components/ProtectedRoute"
 
 export default async function CheckoutPage() {
     return (
-        <Checkout />
+        <ProtectedRoute>
+            <Checkout />
+        </ProtectedRoute>
     )
 }
 
