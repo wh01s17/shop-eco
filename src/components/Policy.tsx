@@ -18,7 +18,7 @@ export const Policy = () => {
                 </p>
 
                 <p>
-                    By choosing our items, you're not only investing in quality but also reducing waste, extending product lifecycles, and supporting ethical consumption habits.
+                    By choosing our items, you&apos;re not only investing in quality but also reducing waste, extending product lifecycles, and supporting ethical consumption habits.
                 </p>
 
                 <h2 className='font-bold text-3xl mt-10 mb-3'>2. Product Philosophy</h2>
