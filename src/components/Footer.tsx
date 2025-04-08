@@ -94,7 +94,9 @@ export const Footer = () => {
                             <i className="ri-refund-2-line" /> 30-day return policy
                         </li>
                         <li>
-                            <i className="ri-file-list-3-line" /> Read our full policy
+                            <Link href='/policy'>
+                                <i className="ri-file-list-3-line" /> Read our full policy
+                            </Link>
                         </li>
                     </ul>
                 </div>

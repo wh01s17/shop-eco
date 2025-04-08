@@ -68,6 +68,12 @@ html {
   transform-origin: bottom center;
 }
 
+.hover\:swing-animation:hover {
+  display: inline-block;
+  animation: swing 2s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
 @keyframes swing-soft {
 
   0% {

@@ -43,7 +43,7 @@ export const SingleProduct = ({ product }: { product: Product }) => {
                 href="/products"
                 className='text-xl mb-5 transform duration-75 hover:scale-103 origin-left transition'
             >
-                « Volver
+                « Back to products
             </Link>
 
             <div className='flex flex-col'>

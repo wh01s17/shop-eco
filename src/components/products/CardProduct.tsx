@@ -10,7 +10,8 @@ export const CardProduct = ({ product }: { product: Product }) => {
 
     return (
         <article
-            className='flex justify-between flex-col border-2 border-green-900 text-green-900 p-3 rounded-2xl 2xl:w-80 3xl:w-100'
+            className='flex justify-between flex-col border-2 border-green-900 text-green-900 p-3 rounded-2xl 
+            xs:w-70 2xl:w-80 3xl:w-100'
         >
             <div>
                 <Link

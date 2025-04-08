@@ -1,24 +1,23 @@
-'use client'
 import { ProductsGrid } from "@/components/products/ProductsGrid";
-import { Product } from "@/types/product";
-import { useEffect, useState } from "react";
 import { Container } from "@/components/layout/Container";
 import fakeApiServices from '@/services/FakeApi'
+import { Loading } from "@/components/ui/Loading";
 
-export default function ProductsPage() {
-    const [products, setProducts] = useState<Product[]>([])
+export default async function ProductsPage() {
+    const products = await fakeApiServices.getProducts()
 
-    useEffect(() => {
-        fakeApiServices
-            .getProducts()
-            .then(data => {
-                setProducts(data)
-            })
-    }, [])
+    if (!products) return <Loading />
 
     return (
         <Container>
             <ProductsGrid products={products} />
         </Container>
-    );
+    )
+}
+
+export async function generateMetadata() {
+    return {
+        title: 'Products',
+        description: 'Products Shop-Eco'
+    }
 }

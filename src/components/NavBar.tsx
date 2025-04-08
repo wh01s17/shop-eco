@@ -41,7 +41,7 @@ export const NavBar = () => {
                             Products
                         </Link>
                         <div
-                            className='mt-2 bg-white text-zinc-700 absolute left-0 opacity-0 w-max overflow-hidden shadow duration-200 px-2  
+                            className='mt-2 bg-white text-zinc-700 absolute -left-10 opacity-0 w-max overflow-hidden shadow duration-200 px-2  text-center
                                         rounded-md group-hover:opacity-100 z-10'
                         >
                             <ul>
@@ -57,8 +57,13 @@ export const NavBar = () => {
                             </ul>
                         </div>
                     </li>
-                    <li>
+                    <li className='relative group'>
                         Cart <i className="ri-shopping-cart-2-line" />
+                        <div>
+                            <ul>
+
+                            </ul>
+                        </div>
                     </li>
                     <li className='realtive group'>
                         Log-in <i className="ri-login-box-line" />
