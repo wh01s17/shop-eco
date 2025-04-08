@@ -10,21 +10,27 @@ export const CardProduct = ({ product }: { product: Product }) => {
 
     return (
         <article
-            className='flex justify-between flex-col border-2 border-green-900 text-green-900 p-3 rounded-2xl 
+            className='flex justify-between flex-col border-2 border-green-900 text-green-900 p-3 rounded-md
             xs:w-70 2xl:w-80 3xl:w-100'
         >
             <div>
-                <Link
-                    href={`/products/${category}`}
-                    className='text-md'
-                >
-                    {category}
-                </Link>
+                <div className='flex justify-between'>
+                    <Link
+                        href={`/products/category/${category}`}
+                        className='text-md capitalize hover:text-green-600'
+                    >
+                        {category}
+                    </Link>
+
+                    <i className="ri-leaf-line" />
+                </div>
+
 
 
                 <h3 className="font-bold text-lg mb-10">
                     <Link
                         href={`/products/${id}`}
+                        className='hover:text-green-600'
                     >
                         {title}
                     </Link>
@@ -39,7 +45,7 @@ export const CardProduct = ({ product }: { product: Product }) => {
                             alt={title}
                             height={180}
                             width={100}
-                            className='object-contain'
+                            className='object-contain hover:scale-105'
                         />
                     </Link>
                 </div>

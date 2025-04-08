@@ -65,7 +65,7 @@ export const Footer = () => {
 
                 <div>
                     <h1 className='text-3xl mb-5'>Contact Us</h1>
-                    <ul className='text-xl [&>li]:duration-100 [&>li]:hover:scale-105 [&>li]:hover:text-green-800 [&>li]:hover:cursor-pointer'>
+                    <ul className='text-xl [&>li]:duration-100 [&>li]:hover:text-green-800 [&>li]:hover:cursor-pointer'>
                         <li>
                             <i className="ri-map-pin-line" /> 123 Green Street, Eco City, Earth
                         </li>
@@ -83,7 +83,7 @@ export const Footer = () => {
 
                 <div>
                     <h1 className='text-3xl mb-5'>Shipping & Returns</h1>
-                    <ul className='text-xl [&>li]:duration-100 [&>li]:hover:scale-105 [&>li]:hover:text-green-800 [&>li]:hover:cursor-pointer'>
+                    <ul className='text-xl [&>li]:duration-100 [&>li]:hover:text-green-800 [&>li]:hover:cursor-pointer'>
                         <li>
                             <i className="ri-truck-line" /> Worldwide shipping available
                         </li>
@@ -93,7 +93,7 @@ export const Footer = () => {
                         <li>
                             <i className="ri-refund-2-line" /> 30-day return policy
                         </li>
-                        <li>
+                        <li className='hover:scale-105'>
                             <Link href='/policy'>
                                 <i className="ri-file-list-3-line" /> Read our full policy
                             </Link>

@@ -36,25 +36,29 @@ export const NavBar = () => {
                             About us
                         </Link>
                     </li>
-                    <li className='relative group'>
-                        <Link href='/products'>
-                            Products
-                        </Link>
-                        <div
-                            className='mt-2 bg-white text-zinc-700 absolute -left-10 opacity-0 w-max overflow-hidden shadow duration-200 px-2  text-center
-                                        rounded-md group-hover:opacity-100 z-10'
-                        >
-                            <ul>
-                                {
-                                    categories.map((category, index) => (
-                                        <li key={index} className='hover:text-green-800 capitalize xs:text-sm 2xl:text-lg py-1'>
+                    <li className='relative'>
+                        <div className='group inline-block'>
+                            <Link href='/products' className=''>
+                                Products
+                            </Link>
+
+                            <div
+                                className='mt-0 bg-white text-zinc-700 absolute -left-10 opacity-0 w-max overflow-hidden shadow duration-200 px-2 text-center 
+                                            rounded-md group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto z-10'
+                            >
+                                <ul>
+                                    {categories.map((category, index) => (
+                                        <li
+                                            key={index}
+                                            className='hover:text-green-800 capitalize xs:text-sm 2xl:text-lg py-1'
+                                        >
                                             <Link href={`/products/category/${category}`}>
                                                 {category}
                                             </Link>
                                         </li>
-                                    ))
-                                }
-                            </ul>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
                     </li>
                     <li className='relative group'>
@@ -65,20 +69,30 @@ export const NavBar = () => {
                             </ul>
                         </div>
                     </li>
-                    <li className='realtive group'>
-                        Log-in <i className="ri-login-box-line" />
-                        <div className='mt-2 bg-white text-zinc-700 absolute right-8 opacity-0 w-max overflow-hidden shadow duration-200 px-2    
-                                        py-1 rounded-md group-hover:opacity-100 z-10 text-center'>
-                            <ul className='xs:text-sm 2xl:text-lg'>
-                                <li>
-                                    <Link href='/' className='hover:text-green-800 capitalize xs:text-sm 2xl:text-lg'>
-                                        Sign-in <i className="ri-door-open-line" />
-                                    </Link>
-                                </li>
-                                <li className='hover:text-green-800 py-1 xs:text-sm 2xl:text-lg'>
-                                    Log-out <i className="ri-logout-box-line" />
-                                </li>
-                            </ul>
+                    <li className='relative'>
+                        <div className='group inline-block'>
+                            <span className='cursor-pointer'>
+                                Log-in <i className="ri-login-box-line" />
+                            </span>
+
+                            <div
+                                className='mt-0 bg-white text-zinc-700 absolute -right-2 opacity-0 w-max overflow-hidden shadow duration-200 px-2 
+                                            py-1 rounded-md group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none z-10 text-center'
+                            >
+                                <ul className='xs:text-sm 2xl:text-lg'>
+                                    <li>
+                                        <Link
+                                            href='/'
+                                            className='hover:text-green-800 capitalize xs:text-sm 2xl:text-lg'
+                                        >
+                                            Sign-in <i className="ri-door-open-line" />
+                                        </Link>
+                                    </li>
+                                    <li className='hover:text-green-800 py-1 xs:text-sm 2xl:text-lg'>
+                                        Log-out <i className="ri-logout-box-line" />
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </li>
                 </ul>

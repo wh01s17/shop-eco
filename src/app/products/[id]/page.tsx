@@ -16,3 +16,10 @@ export default async function SingleProductPage({ params }: Awaited<ProductProps
         </Container>
     )
 }
+
+export async function generateMetadata() {
+    return {
+        title: 'Products',
+        description: 'Products Shop-Eco'
+    }
+}
