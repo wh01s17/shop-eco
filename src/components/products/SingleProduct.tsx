@@ -5,7 +5,7 @@ import React, { JSX } from 'react'
 import { Button } from '../ui/Button'
 
 export const SingleProduct = ({ product }: { product: Product }) => {
-    const { id, title, category, image, description, price, rating } = product
+    const { title, category, image, description, price, rating } = product
     const { rate, count } = rating
 
     const stars = (counter: number): JSX.Element[] => {

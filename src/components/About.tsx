@@ -14,7 +14,7 @@ export const About = () => {
 
                 Our commitment is to carefully select each item to ensure quality and functionality, reducing environmental impact and promoting responsible consumption. We believe that every piece has a story and deserves to continue in the hands of those who appreciate its design and utility.
 
-                Whether you're looking for unique garments, refurbished electronic devices, or jewelry with history, at <b>Shop-Eco</b><i className="font-light ri-leaf-line" />, you'll find products that combine authenticity, savings, and sustainability.
+                Whether you&apos;re looking for unique garments, refurbished electronic devices, or jewelry with history, at <b>Shop-Eco</b><i className="font-light ri-leaf-line" />, you&apos;ll find products that combine authenticity, savings, and sustainability.
 
                 Join our community and be part of the movement towards a greener, more conscious world.
             </p>
@@ -43,7 +43,7 @@ export const About = () => {
             <p className='text-2xl'>
                 Every year, over 8 million tons of plastic waste end up in the ocean, harming marine life and disrupting entire ecosystems. Scientists estimate that by 2050, there could be more plastic than fish in the sea if current pollution rates continue. Microplastics have been found in 100% of marine turtles and over 90% of seabirds, illustrating the urgent need for change.
 
-                By choosing recycled products, you contribute to reducing waste and protecting our planet's waters. Let's take action together to preserve the oceans for future generations.
+                By choosing recycled products, you contribute to reducing waste and protecting our planet&apos;s waters. Let&apos;s take action together to preserve the oceans for future generations.
             </p>
             <div className='flex justify-evenly my-20'>
                 <Image

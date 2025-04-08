@@ -51,7 +51,7 @@ export const Policy = () => {
 
                 <h2 className='font-bold text-3xl mt-10 mb-3'>6. Join the Movement</h2>
                 <p>
-                    By supporting <u>Shop-Eco</u><i className="font-light ri-leaf-line" />, you’re becoming part of a <strong>community that values sustainability, individuality, and environmental responsibility</strong>. Every purchase is a step toward reducing waste and reshaping the future of retail.
+                    By supporting <u>Shop-Eco</u><i className="font-light ri-leaf-line" />, you&apos;re becoming part of a <strong>community that values sustainability, individuality, and environmental responsibility</strong>. Every purchase is a step toward reducing waste and reshaping the future of retail.
                 </p>
                 <p>
                     Together, we can give products a second life—and the planet a second chance.

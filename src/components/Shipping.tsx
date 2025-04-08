@@ -9,7 +9,7 @@ export const Shipping = () => {
             </h1>
 
             <p className='text-2xl'>
-                We offer both, local and worldwide shipping, to ensure that our sustainable products can reach customers everywhere. Whether you're nearby or on the other side of the globe, we strive to provide a smooth and reliable delivery service. Our packaging is eco-friendly, minimizing plastic waste to align with our commitment to sustainability. Shop with confidence and join us in making a positive impact on the planet.
+                We offer both, local and worldwide shipping, to ensure that our sustainable products can reach customers everywhere. Whether you&apos;re nearby or on the other side of the globe, we strive to provide a smooth and reliable delivery service. Our packaging is eco-friendly, minimizing plastic waste to align with our commitment to sustainability. Shop with confidence and join us in making a positive impact on the planet.
             </p>
 
             <div className='flex flex-wrap justify-evenly my-20'>

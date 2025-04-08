@@ -96,7 +96,7 @@ export const ProductsGrid = ({ products }: { products: Product[] }) => {
                         ? filterProducts.map(product => {
                             return <CardProduct key={product.id} product={product} />
                         })
-                        : <h1 className='text-2xl font-bold mt-20'>Apparently we don't have what you're looking for 😥</h1>
+                        : <h1 className='text-2xl font-bold mt-20'>Apparently we don&apos;t have what you&apos;re looking for 😥</h1>
                 }
             </div>
         </section>
