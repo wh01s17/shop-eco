@@ -1,12 +1,12 @@
 'use client'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import fakeApiServices from '@/services/FakeApi'
 import { SmallCart } from './cart/SmallCart'
 import { useAuth } from '@/context/AuthContext'
 import { signOut } from 'firebase/auth'
 import { auth } from '@/firebase/config'
 import { toast } from 'sonner'
+import fakeApiServices from '@/services/FakeApi'
 
 
 export const NavBar = () => {

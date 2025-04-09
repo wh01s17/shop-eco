@@ -1,11 +1,11 @@
-import { Cart } from '@/types/cart'
+import { CartItem } from '@/types/cart'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
 export const SmallCart = () => {
     let total = 0
-    const items: Cart[] = [
+    const items: CartItem[] = [
         {
             id: 2,
             title: 'Mens Casual Premium Slim Fit T-Shirts',
@@ -34,7 +34,8 @@ export const SmallCart = () => {
             Cart <i className="ri-shopping-cart-2-line" />
 
             <div
-                className='hidden group-hover:block absolute -left-15 bg-white text-zinc-700 w-50 shadow-md rounded-md p-2 z-10 text-sm'
+                className='hidden group-hover:block absolute -left-15 bg-white text-zinc-700 w-50 
+                            shadow-md rounded-md p-2 z-10 text-sm'
             >
                 <table className='w-full text-center divide-y divide-zinc-700'>
                     <thead>
@@ -88,7 +89,8 @@ export const SmallCart = () => {
                 <div className='text-right'>
                     <Link
                         href='/checkout'
-                        className='mt-4 font-light inline-block bg-green-700 text-white py-1 px-2 rounded-lg hover:scale-105 transition-transform duration-150'
+                        className='mt-4 font-light inline-block bg-green-700 text-white py-1 px-2 rounded-lg
+                        hover:scale-105 transition-transform duration-150'
                     >
                         Checkout
                     </Link>
