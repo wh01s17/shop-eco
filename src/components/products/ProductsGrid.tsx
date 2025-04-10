@@ -1,10 +1,16 @@
 'use client'
-import { Product } from '@/types/product'
 import { CardProduct } from './CardProduct'
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Loading } from '../ui/Loading'
+import { useProductStore } from '@/store/useProductStore'
 
-export const ProductsGrid = ({ products }: { products: Product[] }) => {
+type ProductGrid = {
+    type: 'all' | 'category' | 'mostValued'
+    category?: string
+}
+
+export const ProductsGrid = ({ type, category }: ProductGrid) => {
+    const { products, loading, getProducts, getProductByCategory, getMostValuedProducts } = useProductStore();
     const [sortOption, setSortOption] = useState("None")
     const [search, setSearch] = useState("")
 
@@ -41,7 +47,17 @@ export const ProductsGrid = ({ products }: { products: Product[] }) => {
             product.description.toLowerCase().includes(search.toLowerCase())
     })
 
-    if (filterProducts.length === 0) return <Loading />
+    useEffect(() => {
+        if (type === 'all') {
+            getProducts()
+        } else if (type === 'category' && category) {
+            getProductByCategory(category)
+        } else if (type === 'mostValued') {
+            getMostValuedProducts()
+        }
+    }, [type, category, getProducts, getProductByCategory, getMostValuedProducts])
+
+    if (loading) return <Loading />
 
     return (
         <section className='flex flex-col w-full justify-center my-20 gap-3'>
@@ -54,7 +70,7 @@ export const ProductsGrid = ({ products }: { products: Product[] }) => {
                         onChange={handleSortOption}
                     >
                         <option>
-                            None
+                            Default
                         </option>
                         <option>
                             Name: A to Z

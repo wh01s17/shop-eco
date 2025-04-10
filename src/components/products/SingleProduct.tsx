@@ -1,12 +1,21 @@
-import { Product } from '@/types/product'
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { JSX } from 'react'
+import React, { JSX, useEffect } from 'react'
 import { Button } from '../ui/Button'
+import { useAuth } from '@/context/AuthContext'
+import { useCartStore } from '@/store/useCartStore'
+import { toast } from 'sonner'
+import { useProductStore } from '@/store/useProductStore'
+import { Loading } from '../ui/Loading'
 
-export const SingleProduct = ({ product }: { product: Product }) => {
-    const { title, category, image, description, price, rating } = product
+export const SingleProduct = ({ idProduct }: { idProduct: number }) => {
+    const { singleProduct, getProductById, loading } = useProductStore()
+
+    const { id, title, category, image, description, price, rating } = singleProduct
     const { rate, count } = rating
+    const { currentUser } = useAuth()
+    const addItem = useCartStore(state => state.addItem)
 
     const stars = (counter: number): JSX.Element[] => {
         const output: JSX.Element[] = []
@@ -35,6 +44,34 @@ export const SingleProduct = ({ product }: { product: Product }) => {
         return output
     }
 
+    const handleAdd = async () => {
+        if (currentUser?.email) {
+            try {
+                const data = {
+                    id: id.toString(),
+                    title,
+                    price,
+                    image,
+                    count: 1
+                }
+
+                await addItem(data, currentUser.email)
+                toast.success('Item added to shopping cart')
+            } catch (error) {
+                console.log(error)
+                toast.error('Error adding item to cart')
+            }
+        } else {
+            toast.error('Must be logged to add an item to shopping cart')
+        }
+    }
+
+    useEffect(() => {
+        getProductById(idProduct)
+    }, [idProduct, getProductById])
+
+    if (loading || !singleProduct) return <Loading />
+
     return (
         <article
             className='flex justify-between flex-col border-green-900 text-green-900 pt-15 pb-30 px-20'
@@ -59,20 +96,28 @@ export const SingleProduct = ({ product }: { product: Product }) => {
                 </h3>
 
                 <div className='flex flex-col items-center h-1/2 mb-20'>
-                    <Image
-                        src={image}
-                        alt={title}
-                        height={1000}
-                        width={500}
-                        className='object-contain'
-                    />
+                    {image ? (
+                        <Image
+                            src={image}
+                            alt={title || 'Product image'}
+                            height={1000}
+                            width={500}
+                            className='object-contain'
+                        />
+                    ) : (
+                        <div className="h-[500px] w-[500px] flex items-center justify-center">
+                            <Loading />
+                        </div>
+                    )}
                 </div>
             </div>
 
             <div className=''>
                 <p className="font-bold text-3xl">${price}</p>
 
-                <Button>
+                <Button
+                    onClick={handleAdd}
+                >
                     Add to cart <i className="ri-shopping-cart-2-line" />
                 </Button>
 

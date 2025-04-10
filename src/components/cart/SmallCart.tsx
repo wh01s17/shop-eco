@@ -29,8 +29,6 @@ export const SmallCart = () => {
     if (loading) return null
 
     return (
-
-
         <div
             className='hidden group-hover:block absolute -left-15 bg-white text-zinc-700 w-50 
                             shadow-md rounded-md p-2 z-10 text-sm'
@@ -53,7 +51,7 @@ export const SmallCart = () => {
                             return <tr
                                 key={item.id}
                             >
-                                <td className='p-1'>
+                                <td id='itemImage' className='p-1'>
                                     <Link
                                         href={`/products/${item.id}`}
                                     >
@@ -66,10 +64,10 @@ export const SmallCart = () => {
                                         />
                                     </Link>
                                 </td>
-                                <td>
+                                <td id='quantity'>
                                     {item.count}
                                 </td>
-                                <td>
+                                <td id='valueItems'>
                                     ${(item.count * item.price).toFixed(2)}
                                 </td>
                                 <td id='delete'>
@@ -79,7 +77,6 @@ export const SmallCart = () => {
                                     >
                                         <i className="ri-delete-bin-line hover:text-red-700 text-lg font-light" />
                                     </button>
-
                                 </td>
                             </tr>
                         })
@@ -101,6 +98,5 @@ export const SmallCart = () => {
                 </Link>
             </div>
         </div>
-
     )
 }

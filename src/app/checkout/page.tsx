@@ -1,4 +1,4 @@
-import { Checkout } from "@/components/cart/Checkout"
+import { Checkout } from "@/components/payment/Checkout"
 import ProtectedRoute from "@/components/ProtectedRoute"
 
 export default async function CheckoutPage() {

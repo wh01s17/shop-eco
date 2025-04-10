@@ -1,6 +1,5 @@
 import { Container } from "@/components/layout/Container"
 import { ProductsGrid } from "@/components/products/ProductsGrid"
-import fakeApiServices from '@/services/FakeApi'
 import { Metadata } from "next"
 
 interface ProductProps {
@@ -9,11 +8,10 @@ interface ProductProps {
 
 export default async function CategoryProductPage({ params }: Awaited<ProductProps>) {
     const { category } = await params
-    const products = await fakeApiServices.getProductByCategory(category)
 
     return (
         <Container>
-            <ProductsGrid products={products} />
+            <ProductsGrid type='category' category={category} />
         </Container>
     )
 }
