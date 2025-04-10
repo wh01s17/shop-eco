@@ -8,7 +8,6 @@ type ProductStore = {
     singleProduct: Product
     loading: boolean
 
-    // metodos
     setProducts: (products: Product[]) => void
     setSingleProduct: (product: Product) => void
     getProducts: () => void

@@ -12,6 +12,7 @@ type CartState = {
 
     // Metodos
     setItems: (items: CartItem[]) => void
+    getItems: () => CartItem[]
     addItem: (item: CartItem, email: string) => Promise<void>
     removeItem: (id: string, email: string) => Promise<void>
     fetchCart: (email: string) => Promise<void>
@@ -23,6 +24,7 @@ export const useCartStore = create<CartState>((set, get) => ({
     loading: false,
 
     setItems: (items) => set({ items }),
+    getItems: () => get().items,
 
     addItem: async (item, email) => {
         try {

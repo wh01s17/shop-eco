@@ -1,12 +1,12 @@
 import { Container } from "@/components/layout/Container"
-import { Checkout } from "@/components/payment/Checkout"
+import { Success } from "@/components/payment/Success"
 import ProtectedRoute from "@/components/ProtectedRoute"
 
-export default async function CheckoutPage() {
+export default async function SuccessPage() {
     return (
         <ProtectedRoute>
             <Container>
-                <Checkout />
+                <Success />
             </Container>
         </ProtectedRoute>
     )
@@ -14,7 +14,7 @@ export default async function CheckoutPage() {
 
 export async function generateMetadata() {
     return {
-        title: 'Checkout',
-        description: 'Shop-Eco Checkout'
+        title: 'Success',
+        description: 'Shop-Eco Success'
     }
 }
