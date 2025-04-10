@@ -5,11 +5,3 @@ export interface CartItem {
     image: string
     count: number
 }
-
-export interface ShoppingCart {
-    email: string
-    items: CartItem[]
-    totalPrice?: number
-    totalItems?: number
-    lastUpdated?: Date
-}

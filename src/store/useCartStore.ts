@@ -1,12 +1,16 @@
 import { create } from 'zustand'
 import { CartItem } from '@/types/cart'
-import { getCartByEmail, addItem as addItemToFirestore, removeItem as removeItemFromFirestore } from '@/firebase/firestoreShoppingCart'
+import {
+    getCartByEmail,
+    addItem as addItemToFirestore,
+    removeItem as removeItemFromFirestore
+} from '@/firebase/firestoreShoppingCart'
 
 type CartState = {
     items: CartItem[]
     loading: boolean
 
-    // Métodos
+    // Metodos
     setItems: (items: CartItem[]) => void
     addItem: (item: CartItem, email: string) => Promise<void>
     removeItem: (id: string, email: string) => Promise<void>
@@ -22,10 +26,8 @@ export const useCartStore = create<CartState>((set, get) => ({
 
     addItem: async (item, email) => {
         try {
-            // Primero añadimos a Firestore
             await addItemToFirestore(item, email)
 
-            // Luego actualizamos el estado local
             set((state) => {
                 const existing = state.items.find((i) => i.id === item.id)
                 if (existing) {
@@ -44,19 +46,26 @@ export const useCartStore = create<CartState>((set, get) => ({
     },
 
     removeItem: async (id, email) => {
+        set({ loading: true })
         try {
-            // Primero eliminamos de Firestore
             await removeItemFromFirestore(id, email)
 
-            // Luego actualizamos el estado local
             set((state) => ({
                 items: state.items
-                    .map((i) =>
-                        i.id === id ? (i.count > 1 ? { ...i, count: i.count - 1 } : null) : i
+                    .map((item) =>
+                        item.id === id
+                            ? (
+                                item.count > 1
+                                    ? { ...item, count: item.count - 1 }
+                                    : null
+                            )
+                            : item
                     )
-                    .filter((i): i is CartItem => i !== null),
+                    .filter((item): item is CartItem => item !== null),
             }))
+            set({ loading: false })
         } catch (error) {
+            set({ loading: false })
             console.error("Error removing item:", error)
             throw error
         }

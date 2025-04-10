@@ -73,7 +73,10 @@ export const NavBar = () => {
                         </div>
                     </li>
                     <li className='relative group'>
-                        <SmallCart />
+                        <div className='group relative inline-block'>
+                            Cart <i className="ri-shopping-cart-2-line" />
+                            <SmallCart />
+                        </div>
                     </li>
                     <li className='relative'>
                         <div className='group inline-block'>
