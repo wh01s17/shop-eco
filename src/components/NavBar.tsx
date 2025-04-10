@@ -8,7 +8,6 @@ import { auth } from '@/firebase/config'
 import { toast } from 'sonner'
 import fakeApiServices from '@/services/FakeApi'
 
-
 export const NavBar = () => {
     const { currentUser } = useAuth()
     const [categories, setCategories] = useState<string[]>([])

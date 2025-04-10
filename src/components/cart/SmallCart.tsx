@@ -1,33 +1,63 @@
-import { CartItem } from '@/types/cart'
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useAuth } from '@/context/AuthContext'
+import { getCartByEmail, removeItem } from '@/firebase/firestoreShoppingCart'
+import { CartItem } from '@/types/cart'
 
 export const SmallCart = () => {
+    const [items, setItems] = useState<CartItem[]>([])
+    const [loading, setLoading] = useState(true);
     let total = 0
-    const items: CartItem[] = [
-        {
-            id: 2,
-            title: 'Mens Casual Premium Slim Fit T-Shirts',
-            image: 'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg',
-            price: 22.3,
-            count: 3
-        },
-        {
-            id: 3,
-            title: 'Mens Cotton Jacket',
-            price: 55.99,
-            image: 'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg',
-            count: 1
-        },
-        {
-            id: 4,
-            title: 'Mens Casual Slim Fit',
-            price: 15.99,
-            image: 'https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg',
-            count: 2
+    const { currentUser } = useAuth()
+
+    const handleDelete = (id: string) => {
+        try {
+            if (currentUser?.email) {
+                removeItem(id, currentUser?.email)
+                setItems(prevItems =>
+                    prevItems.map(item => {
+                        if (item.id === id) {
+                            if (item.count > 1) {
+                                return { ...item, count: item.count - 1 }
+                            } else {
+                                return null
+                            }
+                        }
+                        return item
+                    })
+                        .filter((item): item is typeof items[number] => item !== null)
+                )
+            }
+        } catch (error) {
+            console.error("Error deleting item: ", error);
         }
-    ]
+
+    }
+
+    const fetchData = async (): Promise<void> => {
+        setLoading(true);
+        try {
+            if (currentUser?.email) {
+                const data = await getCartByEmail(currentUser.email);
+                setItems(data);
+            } else {
+                setItems([]);
+            }
+        } catch (error) {
+            console.error("Error al cargar el carrito:", error);
+            setItems([]);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, [currentUser]);
+
+    if (loading) return null
 
     return (
         <div className='group relative inline-block'>
@@ -50,39 +80,47 @@ export const SmallCart = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {items.map(item => {
-                            total += item.count * item.price
-                            return <tr
-                                key={item.id}
-                            >
-                                <td className='p-1'>
-                                    <Link
-                                        href={`/products/${item.id}`}
-                                    >
-                                        <Image
-                                            src={item.image}
-                                            alt={item.title}
-                                            height={60}
-                                            width={30}
-                                            className='object-contain hover:scale-105'
-                                        />
-                                    </Link>
-                                </td>
-                                <td>
-                                    {item.count}
-                                </td>
-                                <td>
-                                    ${item.count * item.price}
-                                </td>
-                                <td className='hover:scale-120'>
-                                    <i className="ri-delete-bin-line hover:text-red-700 text-lg font-light" />
-                                </td>
-                            </tr>
-                        })}
+                        {
+                            items.map(item => {
+                                total += item.count * item.price
+                                return <tr
+                                    key={item.id}
+                                >
+                                    <td className='p-1'>
+                                        <Link
+                                            href={`/products/${item.id}`}
+                                        >
+                                            <Image
+                                                src={item.image}
+                                                alt={item.title}
+                                                height={60}
+                                                width={30}
+                                                className='object-contain hover:scale-105'
+                                            />
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        {item.count}
+                                    </td>
+                                    <td>
+                                        ${item.count * item.price}
+                                    </td>
+                                    <td id='delete'>
+                                        <button
+                                            className='hover:scale-120 cursor-pointer'
+                                            onClick={() => handleDelete(item.id)}
+                                        >
+                                            <i className="ri-delete-bin-line hover:text-red-700 text-lg font-light" />
+                                        </button>
+
+                                    </td>
+                                </tr>
+                            })
+                        }
                         <tr>
                             <td></td>
                             <td>Total:</td>
-                            <td>${total}</td>
+                            <td>${total.toFixed(2)}</td>
                         </tr>
                     </tbody>
                 </table>

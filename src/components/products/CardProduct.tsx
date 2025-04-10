@@ -1,12 +1,33 @@
+'use client'
 import { Product } from '@/types/product'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { Button } from '../ui/Button'
+import { addItem } from '@/firebase/firestoreShoppingCart'
+import { useAuth } from '@/context/AuthContext'
 
 export const CardProduct = ({ product }: { product: Product }) => {
     const { id, title, price, category, image, rating } = product
     const { rate, count } = rating
+    const { currentUser } = useAuth()
+
+    const handleAdd = () => {
+        if (currentUser?.email) {
+            try {
+                const data = {
+                    id: id.toString(),
+                    title,
+                    price,
+                    image,
+                    count
+                }
+                addItem(data, currentUser.email)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    }
 
     return (
         <article
@@ -58,6 +79,7 @@ export const CardProduct = ({ product }: { product: Product }) => {
                     Rating: {rate} <i className="ri-star-fill text-amber-400" /> ({count} reviews)
                 </div>
                 <Button
+                    onClick={handleAdd}
                 >
                     Add to cart <i className="ri-shopping-cart-2-line" />
                 </Button>

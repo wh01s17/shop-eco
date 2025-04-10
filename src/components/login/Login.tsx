@@ -6,13 +6,8 @@ import { useRouter } from 'next/navigation'
 import { auth } from '@/firebase/config'
 import { toast } from 'sonner'
 
-interface Creds {
-    email: string;
-    password: string;
-}
-
 export const Login = () => {
-    const [creds, setCreds] = useState<Creds>({
+    const [creds, setCreds] = useState({
         email: '',
         password: ''
     })
@@ -35,7 +30,7 @@ export const Login = () => {
             toast.success('Welcome 😬')
             router.push('/')
         } catch (error) {
-            toast.error('User and/or password incorrect')
+            toast.error('User or/and password incorrect')
             console.log(error)
         }
     }

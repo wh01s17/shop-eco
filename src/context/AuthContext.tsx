@@ -27,7 +27,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
-                console.log(user)
                 setCurrentUser(user);
             } else {
                 setCurrentUser(null);
@@ -44,7 +43,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
     if (loading) {
         return (
             <div className="flex justify-center items-center min-h-screen">
-                {/* <h1 className='text-6xl'>Cargando...</h1> */}
                 <Loading />
             </div>
         );
