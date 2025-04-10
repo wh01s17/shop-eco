@@ -1,61 +1,30 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useAuth } from '@/context/AuthContext'
-import { getCartByEmail, removeItem } from '@/firebase/firestoreShoppingCart'
-import { CartItem } from '@/types/cart'
+import { useCartStore } from '@/store/useCartStore'
 
 export const SmallCart = () => {
-    const [items, setItems] = useState<CartItem[]>([])
-    const [loading, setLoading] = useState(true);
-    let total = 0
     const { currentUser } = useAuth()
-
-    const handleDelete = (id: string) => {
-        try {
-            if (currentUser?.email) {
-                removeItem(id, currentUser?.email)
-                setItems(prevItems =>
-                    prevItems.map(item => {
-                        if (item.id === id) {
-                            if (item.count > 1) {
-                                return { ...item, count: item.count - 1 }
-                            } else {
-                                return null
-                            }
-                        }
-                        return item
-                    })
-                        .filter((item): item is typeof items[number] => item !== null)
-                )
-            }
-        } catch (error) {
-            console.error("Error deleting item: ", error);
-        }
-
-    }
-
-    const fetchData = async (): Promise<void> => {
-        setLoading(true);
-        try {
-            if (currentUser?.email) {
-                const data = await getCartByEmail(currentUser.email);
-                setItems(data);
-            } else {
-                setItems([]);
-            }
-        } catch (error) {
-            console.error("Error al cargar el carrito:", error);
-            setItems([]);
-        } finally {
-            setLoading(false);
-        }
-    };
+    const { items, loading, removeItem, fetchCart, getTotal } = useCartStore()
 
     useEffect(() => {
-        fetchData();
-    }, [currentUser]);
+        if (currentUser?.email) {
+            fetchCart(currentUser.email)
+        }
+    }, [currentUser, fetchCart])
+
+    const handleDelete = async (id: string) => {
+        if (currentUser?.email) {
+            try {
+                await removeItem(id, currentUser.email)
+            } catch (error) {
+                console.error("Error deleting item: ", error)
+            }
+        }
+    }
+    const total = getTotal()
 
     if (loading) return null
 
@@ -82,7 +51,6 @@ export const SmallCart = () => {
                     <tbody>
                         {
                             items.map(item => {
-                                total += item.count * item.price
                                 return <tr
                                     key={item.id}
                                 >

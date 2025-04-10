@@ -16,8 +16,6 @@ export const getCartByEmail = async (email: string): Promise<CartItem[]> => {
             } as CartItem)
         })
 
-        console.log(items)
-
         return items
     } catch (error) {
         console.error("Error getting items:", error)

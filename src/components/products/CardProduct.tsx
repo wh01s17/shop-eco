@@ -4,15 +4,17 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { Button } from '../ui/Button'
-import { addItem } from '@/firebase/firestoreShoppingCart'
 import { useAuth } from '@/context/AuthContext'
+import { toast } from 'sonner'
+import { useCartStore } from '@/store/useCartStore'
 
 export const CardProduct = ({ product }: { product: Product }) => {
     const { id, title, price, category, image, rating } = product
     const { rate, count } = rating
     const { currentUser } = useAuth()
+    const addItem = useCartStore(state => state.addItem)
 
-    const handleAdd = () => {
+    const handleAdd = async () => {
         if (currentUser?.email) {
             try {
                 const data = {
@@ -20,12 +22,17 @@ export const CardProduct = ({ product }: { product: Product }) => {
                     title,
                     price,
                     image,
-                    count
+                    count: 1
                 }
-                addItem(data, currentUser.email)
+
+                await addItem(data, currentUser.email)
+                toast.success('Item added to shopping cart')
             } catch (error) {
                 console.log(error)
+                toast.error('Error adding item to cart')
             }
+        } else {
+            toast.error('Must be logged to add an item to shopping cart')
         }
     }
 
