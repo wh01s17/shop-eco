@@ -40,7 +40,7 @@ export const Detail = () => {
                         getItems().map((item, index) => {
                             return <tr
                                 key={item.id}
-                                className='divide-x divide-zinc-700'
+                                className='divide-x divide-zinc-700 font-bold'
                             >
                                 <td id='itemImage' className='w-120'>
                                     <Link
@@ -72,12 +72,13 @@ export const Detail = () => {
                             </tr>
                         })
                     }
+                    <tr className='font-bold text-3xl'>
+                        <td></td>
+                        <td></td>
+                        <td className='h-40 w-100'><u>Total</u>: ${getTotal().toFixed(2)}</td>
+                    </tr>
                 </tbody>
             </table>
-
-            <div className='flex justify-end text-3xl font-bold mt-15'>
-                <h1 >Total: ${getTotal().toFixed(2)}</h1>
-            </div>
 
         </div>
     )

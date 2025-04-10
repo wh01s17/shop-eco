@@ -1,16 +1,17 @@
 'use client'
-import React, { JSX, useState } from 'react'
+import React, { useState } from 'react'
 import { Detail } from './Detail'
 import { Shipping } from './Shipping'
 import { Payment } from './Payment'
-import { Resumen } from './Resumen'
+import { Summary } from './Summary'
 import { Button } from '../ui/Button'
+import Link from 'next/link'
 
 const CHECKOUT_STEPS = [
     { id: 'detail', component: Detail, label: 'Details' },
     { id: 'shipping', component: Shipping, label: 'Shipping' },
     { id: 'payment', component: Payment, label: 'Payment' },
-    { id: 'resumen', component: Resumen, label: 'Order Summary' }
+    { id: 'summary', component: Summary, label: 'Order Summary' }
 ]
 
 export const Checkout = () => {
@@ -48,7 +49,7 @@ export const Checkout = () => {
                             <div className={`w-8 h-8 rounded-full flex items-center justify-center mr-2 
                                     ${index < currentStepIndex
                                     ? 'bg-green-900 text-white'
-                                    : index === currentStepIndex ? 'border-2 border-green-900' : 'border-2 border-gray-400'}`}
+                                    : index === currentStepIndex ? 'border-2 border-green-900' : 'border-2 border-gray-200'}`}
                             >
                                 {index < currentStepIndex ? '✓' : index + 1}
                             </div>
@@ -76,12 +77,18 @@ export const Checkout = () => {
                 }
 
                 {
-                    !isLastStep &&
-                    <Button
-                        onClick={goNext}
-                    >
-                        Next »
-                    </Button>
+                    !isLastStep
+                        ? <Button
+                            onClick={goNext}
+                        >
+                            Next »
+                        </Button>
+                        : <Link
+                            href='/checkout/success'
+                            className='mt-2 bg-green-700 text-md text-white py-1 px-3 rounded-lg hover:scale-105'
+                        >
+                            Finish ✓
+                        </Link>
                 }
             </div>
         </section>

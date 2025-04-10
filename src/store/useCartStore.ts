@@ -50,8 +50,6 @@ export const useCartStore = create<CartState>((set, get) => ({
     removeItem: async (id, email) => {
         set({ loading: true })
         try {
-            await removeItemFromFirestore(id, email)
-
             set((state) => ({
                 items: state.items
                     .map((item) =>
@@ -65,6 +63,7 @@ export const useCartStore = create<CartState>((set, get) => ({
                     )
                     .filter((item): item is CartItem => item !== null),
             }))
+            await removeItemFromFirestore(id, email)
             set({ loading: false })
         } catch (error) {
             set({ loading: false })
