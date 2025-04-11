@@ -25,3 +25,17 @@ export type ShippingStore = {
     updateShipping: (field: keyof ShippingData, value: string) => void
     resetShipping: () => void
 }
+
+export type OrderItem = {
+    id: string
+    title: string
+    price: number
+    image: string
+    count: number
+}
+
+export type OrderData = {
+    items: OrderItem[]
+    total: number
+    shipping: ShippingData
+}

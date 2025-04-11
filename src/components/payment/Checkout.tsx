@@ -6,6 +6,10 @@ import { Payment } from './Payment'
 import { Summary } from './Summary'
 import { Button } from '../ui/Button'
 import Link from 'next/link'
+import { useShippingStore } from '@/store/useShippingStore'
+import { toast } from 'sonner'
+import { usePaymentStore } from '@/store/usePaymentStore'
+import { useCartStore } from '@/store/useCartStore'
 
 const CHECKOUT_STEPS = [
     { id: 'detail', component: Detail, label: 'Details' },
@@ -15,16 +19,95 @@ const CHECKOUT_STEPS = [
 ]
 
 export const Checkout = () => {
+    const { items } = useCartStore()
+    const { shippingData } = useShippingStore()
+    const { paymentData } = usePaymentStore()
     const [currentStepIndex, setCurrentStepIndex] = useState(0)
 
     const isFirstStep = currentStepIndex === 0
     const isLastStep = currentStepIndex === CHECKOUT_STEPS.length - 1
 
+    const validateInput = (): boolean => {
+        if (currentStepIndex === 0) {
+            if (items.length === 0) {
+                toast.error('Must add some products')
+                return false
+            }
+        } else if (currentStepIndex === 1) {
+            if (shippingData.address.length < 3) {
+                toast.error('Address invalid')
+                return false
+            }
+
+            if (shippingData.city.length < 3) {
+                toast.error('City invalid')
+                return false
+            }
+
+            if (shippingData.country.length < 3) {
+                toast.error('Country invalid')
+                return false
+            }
+
+            if (shippingData.fullName.length < 3) {
+                toast.error('Full name invalid')
+                return false
+            }
+
+            if (shippingData.postalCode.length < 5) {
+                toast.error('Posta code invalid')
+                return false
+            }
+
+            if (shippingData.region.length < 5) {
+                toast.error('Region/State invalid')
+                return false
+            }
+        } else if (currentStepIndex === 2) {
+            if (paymentData.cardName.length < 6) {
+                toast.error('Cardholder Name invalid')
+                return false
+            }
+
+            const sanitizedNumber = paymentData.cardNumber.replace(/\s+/g, '')
+            if (!/^\d{16}$/.test(sanitizedNumber)) {
+                toast.error('Card number must be 16 digits')
+                return false
+            }
+
+            if (!/^\d{2}\/\d{2}$/.test(paymentData.expiry)) {
+                toast.error('Expiry must be in MM/YY format')
+                return false
+            } else {
+                const [monthStr, yearStr] = paymentData.expiry.split('/')
+                const month = parseInt(monthStr, 10)
+                const year = parseInt(`20${yearStr}`, 10)
+
+                const now = new Date()
+                const currentYear = now.getFullYear()
+                const currentMonth = now.getMonth() + 1
+
+                if (month < 1 || month > 12 || year < currentYear || (year === currentYear && month < currentMonth)) {
+                    toast.error('Card expiry is invalid or in the past')
+                    return false
+                }
+            }
+
+            if (!/^\d{3,4}$/.test(paymentData.cvc)) {
+                toast.error('CVC must be 3 or 4 digits')
+                return false
+            }
+        }
+        return true
+    }
+
     const goNext = () => {
-        if (!isLastStep) {
-            setCurrentStepIndex(prev => prev + 1)
-        } else {
-            console.log('Checkout completed!')
+        if (validateInput()) {
+            if (!isLastStep) {
+                setCurrentStepIndex(prev => prev + 1)
+            } else {
+                console.log('Checkout completed!')
+            }
         }
     }
 
@@ -60,6 +143,7 @@ export const Checkout = () => {
             </div>
 
             <CurrentStepComponent />
+
             <div className='flex justify-between text-2xl mt-10'>
                 {
                     !isFirstStep

@@ -3,7 +3,8 @@ import { CartItem } from '@/types/cart'
 import {
     getCartByEmail,
     addItem as addItemToFirestore,
-    removeItem as removeItemFromFirestore
+    removeItem as removeItemFromFirestore,
+    clearCart as clearCartFromFirestore
 } from '@/firebase/firestoreShoppingCart'
 
 type CartState = {
@@ -17,6 +18,7 @@ type CartState = {
     removeItem: (id: string, email: string) => Promise<void>
     fetchCart: (email: string) => Promise<void>
     getTotal: () => number
+    clearCart: (email: string) => Promise<void>
 }
 
 export const useCartStore = create<CartState>((set, get) => ({
@@ -85,5 +87,21 @@ export const useCartStore = create<CartState>((set, get) => ({
 
     getTotal: () => {
         return get().items.reduce((sum, item) => sum + (item.count * item.price), 0)
+    },
+
+    clearCart: async (email) => {
+        set({ loading: true })
+        try {
+            // Limpiar el carrito en Firestore
+            await clearCartFromFirestore(email)
+
+            // Limpiar el carrito en el estado de zustand
+            set({ items: [] })
+            set({ loading: false })
+        } catch (error) {
+            set({ loading: false })
+            console.error("Error clearing cart:", error)
+            throw error
+        }
     }
 }))
