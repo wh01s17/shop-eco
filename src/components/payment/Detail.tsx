@@ -19,13 +19,12 @@ export const Detail = () => {
         }
     }
     return (
-        <div>
-            <h2 className='text-2xl font-bold my-10'>Shopping Cart information</h2>
+        <section className='px-40 pt-30 flex flex-col items-center'>
             <table
-                className='w-full text-2xl text-center divide-y divide-zinc-700 [&>tbody>tr>td]:px-4 [&>tbody>tr>td]:py-2'
+                className='text-2xl text-center divide-y divide-zinc-700 [&>tbody>tr>td]:px-4 [&>tbody>tr>td]:py-2'
             >
                 <thead>
-                    <tr className="divide-x divide-zinc-700">
+                    <tr className=" divide-zinc-700">
                         <th />
                         <th>
                             Items
@@ -37,20 +36,20 @@ export const Detail = () => {
                 </thead>
                 <tbody>
                     {
-                        getItems().map((item, index) => {
+                        getItems().map(item => {
                             return <tr
                                 key={item.id}
-                                className='divide-x divide-zinc-700 font-bold'
+                                className=' divide-zinc-700 font-bold'
                             >
-                                <td id='itemImage' className='w-120'>
+                                <td id='itemImage' className='w-50'>
                                     <Link
                                         href={`/products/${item.id}`}
                                     >
                                         <Image
                                             src={item.image}
                                             alt={item.title}
-                                            height={200}
-                                            width={100}
+                                            height={180}
+                                            width={90}
                                             className='object-contain hover:scale-105'
                                         />
                                     </Link>
@@ -79,7 +78,6 @@ export const Detail = () => {
                     </tr>
                 </tbody>
             </table>
-
-        </div>
+        </section>
     )
 }

@@ -1,22 +1,8 @@
+import { ShippingStore } from '@/types/payment'
 import { create } from 'zustand'
 
-type ShippingData = {
-    fullName: string
-    address: string
-    city: string
-    region: string
-    postalCode: string
-    country: string
-}
-
-type ShippingStore = {
-    data: ShippingData
-    updateField: (field: keyof ShippingData, value: string) => void
-    reset: () => void
-}
-
 export const useShippingStore = create<ShippingStore>((set) => ({
-    data: {
+    shippingData: {
         fullName: '',
         address: '',
         city: '',
@@ -25,17 +11,17 @@ export const useShippingStore = create<ShippingStore>((set) => ({
         country: '',
     },
 
-    updateField: (field, value) =>
+    updateShipping: (field, value) =>
         set((state) => ({
-            data: {
-                ...state.data,
+            shippingData: {
+                ...state.shippingData,
                 [field]: value,
             },
         })),
 
-    reset: () =>
+    resetShipping: () =>
         set(() => ({
-            data: {
+            shippingData: {
                 fullName: '',
                 address: '',
                 city: '',

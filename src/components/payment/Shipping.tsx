@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { useCartStore } from '@/store/useCartStore'
 
 export const Shipping = () => {
-    const { data, updateField } = useShippingStore()
+    const { shippingData, updateShipping } = useShippingStore()
     const { items, getTotal } = useCartStore()
 
     const formData = [
@@ -19,9 +19,8 @@ export const Shipping = () => {
     ]
 
     return (
-        <div className='flex'>
-            <div className='w-1/2'>
-                <h2 className='text-2xl font-bold my-10'>Shipping</h2>
+        <section className='flex pt-20'>
+            <div className='w-1/2 '>
                 <form className='grid gap-4'>
                     {
                         formData.map(({ id, label, placeholder }) => (
@@ -34,8 +33,8 @@ export const Shipping = () => {
                                     id={id}
                                     name={id}
                                     placeholder={placeholder}
-                                    value={data[id as keyof typeof data]}
-                                    onChange={(e) => updateField(id as keyof typeof data, e.target.value)}
+                                    value={shippingData[id as keyof typeof shippingData]}
+                                    onChange={(e) => updateShipping(id as keyof typeof shippingData, e.target.value)}
                                     className='border border-zinc-400 rounded px-3 py-2'
                                 />
                             </div>
@@ -44,7 +43,7 @@ export const Shipping = () => {
                 </form>
             </div>
 
-            <div className='w-1/2 pl-80 pt-30'>
+            <div className='w-1/2 pl-70 pt-10'>
                 <table className='w-full text-center divide-y divide-zinc-700'>
                     <thead>
                         <tr>
@@ -93,6 +92,6 @@ export const Shipping = () => {
                     </tbody>
                 </table>
             </div>
-        </div >
+        </section >
     )
 }

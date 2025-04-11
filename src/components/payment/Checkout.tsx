@@ -44,7 +44,7 @@ export const Checkout = () => {
                     CHECKOUT_STEPS.map((step, index) => (
                         <div
                             key={step.id}
-                            className={`flex items-center ${index <= currentStepIndex ? 'text-green-900 font-bold' : 'text-gray-400'}`}
+                            className={`flex items-center text-2xl ${index <= currentStepIndex ? 'text-green-900 font-bold' : 'text-gray-400'}`}
                         >
                             <div className={`w-8 h-8 rounded-full flex items-center justify-center mr-2 
                                     ${index < currentStepIndex
@@ -60,7 +60,7 @@ export const Checkout = () => {
             </div>
 
             <CurrentStepComponent />
-            <div className='flex justify-between text-2xl mt-20'>
+            <div className='flex justify-between text-2xl mt-10'>
                 {
                     !isFirstStep
                         ? <Button
